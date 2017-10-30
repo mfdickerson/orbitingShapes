@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lan="en">
+
+	<head>
+		<meta charset="utf-8">
+    	<meta author="Mark Dickerson">
+		<title>Project 4</title>
+		<script type="text/javascript" src="../lib/webgl-utils.js"></script>
+		<script type="text/javascript" src="../lib/MV.js"></script>
+		<script type="text/javascript" src="../lib/InitShaders.js"></script>
+		
+		
+		<script type="text/javascript" src="mfdickerson_proj4.js"></script>
+		
+		
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			attribute vec4 a_Position;
+			attribute vec4 a_Color;
+			uniform mat4 u_Projection;
+			uniform mat4 u_ViewMatrix;
+			uniform mat4 u_ModelMatrix;
+			varying vec4 v_Color;
+			void main(){
+				gl_Position = u_Projection* u_ViewMatrix*u_ModelMatrix* a_Position;
+				
+				
+				v_Color = a_Color;
+			}
+		</script>
+		
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+			varying vec4 v_Color;
+			void main(){
+				gl_FragColor = v_Color;
+			}
+		</script>
+		
+		
+		
+	</head>
+	<body>
+		<canvas id="gl-canvas" width="640" height="640">
+			You need a better web browser
+		</canvas>
+		
+		<h1>Rotating Shapes</h1>
+		<p>
+			<a href="http://www.cs.middlebury.edu/~candrews/classes/cs461/programs/program4.html">Assignment Description</a>
+		</p>
+		
+	</body>
+</html>
